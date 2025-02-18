@@ -1,12 +1,32 @@
-# The JG seal of approval
+# 🌳 Decision Tree Builder
 
-Add a new bookmarklet to your browser with the following URL:
+<!--<SHORT-PRESENTATION>-->
+Build, Simulate & Export Dynamic Decision Trees
 
-```javascript
-javascript:(function() {var h=document.getElementsByTagName('head')[0]; var sc=document.createElement('sc'+'ript');sc.setAttribute('src', 'https://jg-seal.jlb.ninja/jgseal.js'); h.appendChild(sc);})()
-```
+A **Proof of Concept (POC)** for an **interactive decision tree editor** with **real-time simulation** and **JSON export**.  
+<!--</SHORT-PRESENTATION>-->
 
-Then go to any website and click the bookmarklet. If the website is approved by the JG, you will see the JG seal of approval in the top right corner of the website 🎉.
+## **🔹 Features (Work in Progress)**
+- 🧠 **Real-time simulation** → Test decisions dynamically with an interactive UI.
+- 📄 **JSON Export & Import** → Save, share, and integrate decision trees in other applications.  
+- ⚡ **Fast & lightweight** → Runs entirely in the browser, no backend required.  
 
-Enjoy!
-# dc-decision-tree
+## **💡 Disclaimer – This is just a POC!**
+This project is **not finished** and **definitely not production-ready**.  
+
+Missing features (aka, things I’ll "probably" fix one day):
+- More polished UI/UX (because good looks matter)
+- Error handling (right now, just don't break it, please)
+- Optimizations for bigger trees (so your browser doesn’t cry)
+
+💾 **Potential use cases (if I ever finish it)**
+- Chatbot decision logic
+- Workflow automation
+- Interactive user guides
+- Game branching narratives
+
+🕹️ **Try the prototype (at your own risk 😆):**
+
+Demo: [Decision Tree Demo](https://decision-tree.jlb.ninja/)
+
+📝 *Might be finished one day… or maybe not. Who knows?* 😏

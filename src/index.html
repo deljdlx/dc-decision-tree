@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+    <title>Tree builder</title>
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.11/themes/default/style.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="./css/bootstrap-override.css" />
+
+    <link rel="stylesheet" href="./css/utils/TabPanel.css" />
+    <link rel="stylesheet" href="./css/utils/ResizibleDiv.css" />
+    <link rel="stylesheet" href="./css/utils/Popin.css" />
+
+    <link rel="stylesheet" href="./css/workspace.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/left-panel.css" />
+
+
+
+
+
+
+</head>
+
+<body>
+    <div id="toolbar"></div>
+    <div id="workspace">
+
+        <div id="left-panel">
+            <div id="left-panel-toolbar">
+                <i class="panel-trigger" data-feather="circle" data-target="data-container"></i>
+                <i class="panel-trigger" data-feather="alert-octagon" data-target="editor-container-test"></i>
+            </div>
+            <div id="left-panel-content">
+                <div id="data-container"  class="left-panel-panel active">
+                    <div id="jstree-container"></div>
+                    <!-- <div id="node-data"></div> -->
+                </div>
+
+                <div id="editor-container-test"  class="left-panel-panel">
+                    <div id="node-data-test"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div id='tree-container'></div> -->
+
+        <div id="main-panel">
+            <div class="tabs">
+                <div class="tab active">Graph</div>
+                <div class="tab active">Source</div>
+                <div class="tab active">Test</div>
+            </div>
+
+            <div class="tab-contents">
+                <div id="graph-container" class="tab-content">
+                    <div id="graph"></div>
+                </div>
+
+                <div id="editor-container"  class="tab-content">
+                    <div id="source-editor"></div>
+                </div>
+
+
+                <div id="questionnaire-container"  class="tab-content">
+                    <img src="./images/mention.png" style="width: 100%" />
+                    <div id="questionnaire"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="right-panel">
+
+
+
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+
+
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+                        Accordion Item #3
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show">
+                      <div class="accordion-body">
+                        <div id="node-info-container"></div>
+                    </div>
+                  </div>
+
+
+
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                      Node source
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+
+
+
+                        <div id="node-editor-container">
+                            <div id="node-editor"></div>
+                            <div>
+                                <button id="node-editor-update" type="button" class="btn btn-secondary">Update</button>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                      Node rich content
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                        <div id="wysiwyg-container">
+                            <div id="wysiwyg"></div>
+                            <div>
+                                <button id="wysiwyg-update" type="button" class="btn btn-secondary">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace()
+    </script>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.11/jstree.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.5/beautify.min.js"></script>
+
+
+
+    <script src="./src/js/Tree/TreeAbstractNode.js"></script>
+    <script src="./src/js/Tree/TreeOption.js"></script>
+    <script src="./src/js/Tree/TreeNode.js"></script>
+    <script src="./src/js/Tree/TreeNodeData.js"></script>
+
+    <script src="./src/js/AddNodeForm.js"></script>
+    <script src="./src/js/AddOptionForm.js"></script>
+
+    <script src="./src/js/EchartRenderer.js"></script>
+    <script src="./src/js/JSTreeRenderer.js"></script>
+
+    <script src="./src/js/NodeEditor.js"></script>
+    <script src="./src/js/WysiwygEditor.js"></script>
+    <script src="./src/js/NodeInfo.js"></script>
+
+
+    <script src="./src/js/Questionnaire/QuestionnaireRenderer.js"></script>
+    <script src="./src/js/Questionnaire/QuestionnaireSession.js"></script>
+
+
+
+    <script src="./src/js/utils/Draggable.js"></script>
+    <script src="./src/js/utils/Popin.js"></script>
+    <script src="./src/js/utils/TabPanel.js"></script>
+    <script src="./src/js/utils/ResizibleDiv.js"></script>
+
+
+    <script src="./src/js/Workspace.js"></script>
+
+
+
+    <script>
+
+
+
+// const myResizableDiv2 = new ResizableDiv('#main-content-container');
+
+
+
+
+
+        document.querySelectorAll('.panel-trigger').forEach(trigger => {
+            trigger.addEventListener('click', (event) => {
+                const button = event.currentTarget;
+                const targetName = button.dataset.target;
+
+                document.querySelectorAll('.left-panel-panel').forEach((panel) => {
+                    panel.classList.remove('active');
+                });
+
+                document.getElementById(targetName).classList.add('active');
+            });
+        });
+
+
+        // ===========================
+        // ===========================
+
+        const workspace = new Workspace();
+        workspace.loadByURL('./data/developer.json');
+
+
+        // const tree = new TreeNode();
+        // const ui = new TreeNodeUI(tree);
+        // document.querySelector('#tree-container').append(ui.render());
+
+        //*/
+        /*
+        const tree = new TreeNode('Est ce que cet animal vole', null, (node) => {
+            const json = JSON.stringify(tree.toJSON());
+            const data = tree.toJSON();
+
+            console.log('%cindex.html :: 42 =============================', 'color: #f00; font-size: 1rem');
+            console.log(data);
+            console.log(json);
+            echartRenderer.render(container, tree);
+
+            jsTreeRenderer.loadData(data);
+
+            // console.log('%cindex.html :: 61 =============================', 'color: #f00; font-size: 1rem');
+            // console.log(jsTreeRenderer.exportToTreeNode());
+        });
+
+
+        const yes = tree.createOption(1, 'Oui');
+        tree.createOption(0, 'Non');
+        tree.createOption(-1, 'Passer');
+
+
+        const hasFeather = yes.setChild(
+            new TreeNode('Est ce cet animal à des plumes')
+        );
+
+        hasFeather.createOption(1, 'Oui');
+        hasFeather.createOption(0, 'Non');
+
+        //*/
+    </script>
+
+</body>
+
+</html>

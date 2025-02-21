@@ -1,6 +1,7 @@
 services:
   decision-tree:
     image: nginx:alpine
+    container_name: decision-tree
     restart: always
     env_file:
       - .env

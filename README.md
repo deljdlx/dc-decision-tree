@@ -11,7 +11,7 @@ A **Proof of Concept (POC)** for an **interactive decision tree editor** with **
 - 📄 **JSON Export & Import** → Save, share, and integrate decision trees in other applications.  
 - ⚡ **Fast & lightweight** → Runs entirely in the browser, no backend required.  
 
-## **💡 Disclaimer – This is just a POC!**
+## **💩 Disclaimer – This is just a POC!**
 This project is **not finished** and **definitely not production-ready**.  
 
 Missing features (aka, things I’ll "probably" fix one day):

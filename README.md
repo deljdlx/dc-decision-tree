@@ -3,7 +3,7 @@
 <!--<SHORT-PRESENTATION>-->
 Build, Simulate & Export Dynamic Decision Trees
 
-A **Proof of Concept (POC)** for an **interactive decision tree editor** with **real-time simulation** and **JSON export**.  
+A **Proof of Concept** for an **interactive decision tree editor** with **real-time simulation** and **JSON export**.  
 <!--</SHORT-PRESENTATION>-->
 
 ## **🔹 Features (Work in Progress)**
